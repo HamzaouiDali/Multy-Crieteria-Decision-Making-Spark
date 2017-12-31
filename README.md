@@ -1,7 +1,7 @@
 # Multy-Crieteria-Decision-Making-Spark
 # Installing
 
-before executing this code you have to import this sql script to MySqlWorkbench
+before executing the project you have to import this sql script to MySqlWorkbench
 
 
 ```
