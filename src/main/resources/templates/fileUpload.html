@@ -1,0 +1,155 @@
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Login page</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>    
+ <div class="error-actions" align="right"  id="aTag" onclick="return doWork();">
+            <a href="login" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Logout</a>
+                </div>
+  
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MCDM</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a   href="#file" data-toggle="collapse">STURTURE DU FICHIER</a></li>
+                        <li ><a href="#topsis" data-toggle="collapse">TOPSIS</a></li>
+                        <li><a href="spark" target="_blank" >SPARK</a></li>
+            
+            <li><a href="etapes" >LES ETAPES</a></li>
+            <li><a href="https://www.linkedin.com/in/mohamed-ali-hamzaoui/" target="_blank">CONTACT</a></li>
+                          <li><a href="login"  onclick="return doWork();">	
+SE DECONNECTER</a></li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+  
+    
+  <div class = "container">
+	<div class="wrapper">
+		<form action="uploadFile" method="post" name="UploadFile_Form" class="form-signin" enctype="multipart/form-data">       
+		    <h3 class="form-signin-heading">Bienvenue  <span th:text="${user}" /> ! </h3>
+		      <h5 class="form-signin-heading">	Exécutez l'algorithme TOPSIS en utilisant la puissance du framework SPARK</h5>
+		    
+			  <hr class="colorgraph" /><br />
+			  <input type="file" class="form-control" name="textFile" placeholder="fle" required="" autofocus=""  accept=".txt"/>             
+          
+        <input type="hidden" id="token" name="token" value="" />
+
+          
+			  
+			   		  
+			  <button class="btn btn-lg btn-primary btn-block"  id="clickMe" name="Submit" value="Login" onclick="doFunction();">Envoyez</button> 
+			   			
+		</form>	
+					     
+				    <div class="table-responsive">          
+
+    <table class="table">
+      <tr>
+        <th>Files </th>
+        
+      </tr>
+      <tr th:each="it : ${ls}">
+        <td > <a th:href="${it}" th:text="${it}" /> </td>
+      </tr>
+    </table>
+</div>	
+	</div>
+
+
+</div>
+  
+    <div class="container">
+  <div id="topsis" class=" collapse">
+    <strong>TOPSIS</strong> est une méthode dont le but est de pouvoir classer par ordre de choix un certain nombre d’alternatives sur la base d’un ensemble de critères favorables ou défavorables. Cette méthode s’inscrit dans les techniques utilisées dans le domaine d’aide à la décision multicritères MCDM. Elle a été développée par Hwang et Yoon en 1981 . Son principe consiste à déterminer pour chaque alternative un coefficient compris entre 0 et 1 sur la base des distances (eucli- diennes) entre chaque alternative d’une part et les solutions idéales favorable et défavorable. Une alternative est dite idéale favorable si elle est la plus loin de la pire alternative et la plus proche de la meilleure alternative. Une alternative est dite idéale défavorable si elle est la plus proche de la pire alternative et la plus loin de la meilleure alternative
+  </div>
+</div>
+
+<div class="container">
+  <div id="file" class=" collapse">
+<div class="container">
+  <h2>Structure du fichier</h2>
+
+  
+  <p>Pour pouvoir exécuter l'algorithme topsis, le fichier doit être bien structuré.</p>
+    <p>Je vais maintenant vous dire comment créer vos fichiers pour obtenir de bons résultats</p>
+  
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home">Exemple</a></li>
+    <li><a data-toggle="pill" href="#menu1">Première ligne</a></li>
+    <li><a data-toggle="pill" href="#menu2">Deuxième ligne</a></li>
+    <li><a data-toggle="pill" href="#menu3">Le reste du fichier</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <figure>
+	                    <img src="https://img4.hostingpics.net/thumbs/mini_704783structure.png" width="620" height="340" />
+                        </figure>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <p>dans la premiére ligne en trouve les valeurs 1 ou 0 , 1 dans la iéme position pour maximiser la iéme colonnes</p>
+            <p>0 dans la iéme position pour minimiser la iéme colonnes</p>
+      
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <p>
+Dans la deuxième ligne, nous trouvons les valeurs d'importance pour chaque critère, la somme des valeurs de l'importance doit être égale à 1 .</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <p>Dans le reste du fichier, nous trouvons le score des condidats pour chaque critère.</p>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+
+  </body>
+<script th:if="token" th:inline="javascript">
+
+function doWork(){
+	localStorage.removeItem("token");
+
+    return true; // then return true to redirect
+}
+
+document.getElementById("clickMe").onclick = function () {  
+	var e = localStorage.getItem("token");
+
+	if(e.length>0){
+	
+	document.getElementById("token").value = e;
+     
+	//return false; 
+	}
+	};
+
+    var token = [[${token}]];
+    console.log(token);
+    localStorage.setItem("token",token)
+</script>
+</html>
